@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { usuarioS } from 'src/app/domain/Usuario';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrarUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usuario: usuarioS = new usuarioS();
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
