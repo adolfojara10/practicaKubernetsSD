@@ -11,10 +11,18 @@ import { UsuarioServicioService } from 'src/app/services/usuario-servicio.servic
 export class RegistrarUsuarioComponent implements OnInit {
 
   usuario: usuarioS = new usuarioS();
+  users: any;
 
   constructor(private router: Router, private usuarioService: UsuarioServicioService) { }
 
   ngOnInit(): void {
+    this.usuarioService.getPersonas().subscribe(data => {
+      this.users = data;
+    });
+  }
+
+  onSubmit() {
+    this.usuarioService.save(this.usuario);
   }
 
 }
