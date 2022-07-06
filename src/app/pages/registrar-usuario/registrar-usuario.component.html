@@ -1,1 +1,33 @@
-<p>registrar-usuario works!</p>
+<div class="card my-5">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" [(ngModel)]="usuario.nombre" class="form-control" id="name" name="name"
+                    placeholder="Enter your name" required #name="ngModel">
+            </div>
+            <div [hidden]="!name.pristine" class="alert alert-danger">Nombre is required</div>
+            <div class="form-group">
+                <label for="name">Apellido</label>
+                <input type="text" [(ngModel)]="usuario.apellido" class="form-control" id="name" name="name"
+                    placeholder="Enter your name" required #name="ngModel">
+            </div>
+            <div [hidden]="!name.pristine" class="alert alert-danger">Apellido is required</div>
+            <div class="form-group">
+                <label for="name">Cédula</label>
+                <input type="text" [(ngModel)]="usuario.cedula" class="form-control" id="name" name="name"
+                    placeholder="Enter your name" required #name="ngModel">
+            </div>
+            <div [hidden]="!name.pristine" class="alert alert-danger">Cedula is required</div>
+
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" [(ngModel)]="usuario.email" class="form-control" id="email" name="email"
+                    placeholder="Enter your email address" required #email="ngModel">
+                <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+            </div>
+            <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+        </form>
+    </div>
+</div>

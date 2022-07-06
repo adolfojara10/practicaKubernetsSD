@@ -11,14 +11,21 @@ export class UsuarioServicioService {
   private usuarioURL: string="";
 
   constructor(private http: HttpClient) { 
-    this.usuarioURL = 'http://localhost:8080/users';
+    
   }
 
   getPersonas(): Observable<any[]>{
+    this.usuarioURL = 'http://localhost:8080/users';
     return this.http.get<any>(this.usuarioURL);
   }
 
   save(usuario: usuarioS){
+    this.usuarioURL = 'http://localhost:8080/users';
+    return this.http.post<any>(this.usuarioURL, usuario);
+  }
+
+  login(usuario: usuarioS){
+    this.usuarioURL = 'http://localhost:8080/login';
     return this.http.post<any>(this.usuarioURL, usuario);
   }
 

@@ -21,8 +21,12 @@ export class RegistrarUsuarioComponent implements OnInit {
     });
   }
 
+
   onSubmit() {
     this.usuarioService.save(this.usuario);
+    this.usuarioService.getPersonas().subscribe(data => {
+      this.users = data;
+    });
   }
 
 }
