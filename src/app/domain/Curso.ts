@@ -4,5 +4,6 @@ export class cursoS {
     contenido: String= "";
     categoria: String= "";
     numeroHoras: number= 0;
+    precio:number= 0;
     
 }

@@ -59,6 +59,10 @@
 </style>
 
 <body>
+    <nav>
+        <button type="button"><a href="/curso">Cursos</a></button>
+        <button type="button"><a href="/crear-curso">Crear cursos</a></button>
+      </nav>
     <div class="card my-5">
         <div class="card-body">
           <table class="table table-bordered table-striped">
@@ -69,6 +73,7 @@
                 <th scope="col">Contenido</th>
                 <th scope="col">Categoría</th>
                 <th scope="col">Número de Horas</th>
+                <th scope="col">Acción</th>
               </tr>
             </thead>
             <tbody>
@@ -77,7 +82,8 @@
                 <td>{{ curso.nombre }}</td>
                 <td>{{ curso.contenido }}</td>
                 <td>{{ curso.categoria }}</td>
-                <td>{{ curso.numeroHoras }}</td>  
+                <td>{{ curso.numeroHoras }}</td>
+                <td><button id="comprar" (click)="comprar()">Comprar</button></td>
               </tr>
             </tbody>
           </table>

@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class UsuarioServicioService {
   private usuarioURL: string="";
+  private usuario: usuarioS= new usuarioS();
 
   constructor(private http: HttpClient) { 
     
@@ -24,9 +25,9 @@ export class UsuarioServicioService {
     return this.http.post<any>(this.usuarioURL, usuario);
   }
 
-  login(usuario: usuarioS){
+  login(email: string) {
     this.usuarioURL = 'http://localhost:8080/login';
-    return this.http.post<any>(this.usuarioURL, usuario);
+    return this.http.get<usuarioS>(this.usuarioURL+"/"+email);
   }
 
 

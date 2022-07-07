@@ -1,0 +1,45 @@
+<nav>
+    <button type="button"><a href="/curso">Cursos</a></button>
+    <button type="button"><a href="/crear-curso">Crear cursos</a></button>
+  </nav>
+<div class="card my-5">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" [(ngModel)]="curso.nombre" class="form-control" id="nombre" name="name"
+                    placeholder="Enter your name" required #name="ngModel">
+            </div>
+            <div [hidden]="!name.pristine" class="alert alert-danger">Nombre</div>
+            <div class="form-group">
+                <label for="name">Contenido</label>
+                <input type="text" [(ngModel)]="curso.contenido" class="form-control" id="contenido" name="name"
+                    placeholder="Enter your name" required #name="ngModel">
+            </div>
+            <div [hidden]="!name.pristine" class="alert alert-danger">Contenido</div>
+            <div class="form-group">
+                <label for="name">Categoría</label>
+                <input type="text" [(ngModel)]="curso.categoria" class="form-control" id="categoria" name="name"
+                    placeholder="Enter your name" required #name="ngModel">
+            </div>
+            <div [hidden]="!name.pristine" class="alert alert-danger">Categoria</div>
+
+
+            <div class="form-group">
+                <label for="email">Número de horas</label>
+                <input type="text" [(ngModel)]="curso.numeroHoras" class="form-control" id="numeroHoras" name="email"
+                    placeholder="Ingrese numero de horas" required #email="ngModel">
+                <div [hidden]="!email.pristine" class="alert alert-danger">Númeo de horas</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Precio</label>
+                <input type="text" [(ngModel)]="curso.precio" class="form-control" id="precio" name="precio"
+                    placeholder="Ingrese precio" required #email="ngModel">
+                <div [hidden]="!email.pristine" class="alert alert-danger">Precio</div>
+            </div>
+
+            <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info" (click)="onSubmit()">Submit</button>
+        </form>
+    </div>
+</div>

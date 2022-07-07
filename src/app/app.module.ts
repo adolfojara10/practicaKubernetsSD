@@ -11,13 +11,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsuarioServicioService } from './services/usuario-servicio.service';
 import { PagoServicioService } from './services/pago-servicio.service';
 import { CursoServicioService } from './services/curso-servicio.service';
+import { CrearCursoComponent } from './pages/crear-curso/crear-curso.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrarUsuarioComponent,
     LoginComponent,
-    CursosComponent
+    CursosComponent,
+    CrearCursoComponent
   ],
   imports: [
     BrowserModule,
