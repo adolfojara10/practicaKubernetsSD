@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { cursoS } from 'src/app/domain/Curso';
+import { pagoS } from 'src/app/domain/Pago';
 import { usuarioS } from 'src/app/domain/Usuario';
 import { CursoServicioService } from 'src/app/services/curso-servicio.service';
+import { PagoServicioService } from 'src/app/services/pago-servicio.service';
 
 @Component({
   selector: 'app-cursos',
@@ -11,13 +13,16 @@ import { CursoServicioService } from 'src/app/services/curso-servicio.service';
 })
 export class CursosComponent implements OnInit {
 
+  pago: pagoS = new pagoS();
+
+
   curso:cursoS=new cursoS();
   cursos:any;
 
 
   usuario: usuarioS = new usuarioS();
 
-  constructor(private router: Router, private cursoService: CursoServicioService,private route: ActivatedRoute) {
+  constructor(private router: Router, private cursoService: CursoServicioService, private pagoService: PagoServicioService,private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       console.log(params);
 
@@ -42,6 +47,24 @@ export class CursosComponent implements OnInit {
   }*/
 
   comprar(){
+
+    this.pago.idUsuario = this.usuario.id;
+    this.pago.idCurso = this.curso.id;
+    this.pago.monto = this.curso.precio;
+    this.pago.fecha = new Date();
+    this.pago.metodoPago = "Tarjeta";
+
+    console.log(this.pago);
+
+    this.pagoService.pagar(this.pago);
+
+/*
+    let params: NavigationExtras = {
+      queryParams: {
+        pago : this.pago
+      }
+    }
+    this.router.navigate(['curso'], params);*/
   }
   
   onSelectionChange(event:any){
@@ -59,13 +82,10 @@ export class CursosComponent implements OnInit {
           curso : this.curso
         }
       }
-      
-      this.router.navigate(['cargar-obras'], params);
+
+
     }
   }
-
-
-
-  
+ 
 
 }
