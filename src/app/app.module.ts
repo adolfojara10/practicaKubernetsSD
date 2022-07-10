@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrarUsuarioComponent } from './pages/registrar-usuario/registrar-usuario.component';
@@ -12,6 +11,7 @@ import { UsuarioServicioService } from './services/usuario-servicio.service';
 import { PagoServicioService } from './services/pago-servicio.service';
 import { CursoServicioService } from './services/curso-servicio.service';
 import { CrearCursoComponent } from './pages/crear-curso/crear-curso.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import { CrearCursoComponent } from './pages/crear-curso/crear-curso.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    RouterModule,
     HttpClientModule,
     FormsModule
   ],

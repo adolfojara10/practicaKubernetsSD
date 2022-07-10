@@ -6,37 +6,45 @@ import { UsuarioServicioService } from 'src/app/services/usuario-servicio.servic
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   usuario: usuarioS = new usuarioS();
+  usu: usuarioS = new usuarioS();
   usuarios: any;
-  email: string = "";
-  contrasenia: string = "";
-
-  constructor(private router: Router, private usuarioService: UsuarioServicioService) { }
+  constructor(
+    private router: Router,
+    private usuarioService: UsuarioServicioService
+  ) {}
 
   ngOnInit(): void {
-    this.usuarioService.getPersonas().subscribe(data => {
-      console.log(data)
-      this.usuarios = data;
+    this.usuarioService.getPersonas().subscribe((data) => {
+      console.log(data);
     });
-
   }
 
   onSubmit() {
-    this.email = this.usuario.email as string;
-    this.contrasenia = this.usuario.contrasenia as string;
-    this.usuarioService.login(this.email, this.contrasenia).subscribe((response: usuarioS) => { this.usuario = response; console.log("-- > ",this.usuario)});
-    console.log(this.usuario.email, " --* ", this.usuario.contrasenia)
-    
-    let params: NavigationExtras = {
-      queryParams: {
-        usuario : this.usuario
+    console.log(this.usuario.email, ' --* ', this.usuario.contrasenia);
+    this.usuarioService.login(this.usuario).subscribe((data: usuarioS) => {
+      this.usu = data;
+      console.log('> ', this.usu);
+      var n = data;
+      console.log('n ', n);
+      if (n === null) {
+        console.log('a');
+        window.alert('Datos incorrectos, Intente otra vez');
+        location.reload();
+      } else {
+        console.log('hay us');
+        if (window.confirm('Datos correctos, Iniciando sesion')) {
+          let params: NavigationExtras = {
+            queryParams: {
+              usuario: this.usuario,
+            },
+          };
+          this.router.navigate(['curso'], params);
+        }
       }
-    }
-    //this.router.navigate(['curso'], params);
+    });
   }
 }
-

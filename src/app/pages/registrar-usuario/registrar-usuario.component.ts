@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 import { usuarioS } from 'src/app/domain/Usuario';
 import { UsuarioServicioService } from 'src/app/services/usuario-servicio.service';
 import { LoginComponent } from '../login/login.component';
@@ -28,9 +28,16 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('-- ', this.c);
+    let username =
+      this.usuario.nombre
+        .replace(' ', '')
+        .substring(0, this.usuario.nombre.length / 2) +
+      this.usuario.apellido
+        .replace(' ', '')
+        .substring(0, this.usuario.apellido.length / 2);
 
-    console.log('funciaonaaa ', this.usuario);
+    console.log(username);
+    this.usuario.username = username;
     this.usuarioService
       .save(this.usuario)
       .subscribe((data: any) => console.log('--- ', data));
@@ -38,5 +45,16 @@ export class RegistrarUsuarioComponent implements OnInit {
       // this.users = data;
       console.log(data);
     });
+    // let r = window.confirm('Su usuario es '+username);
+
+    if (window.confirm('Su usuario es ' + username)) {
+      let params: NavigationExtras = {
+        queryParams: {
+          usuario: this.usuario,
+        },
+      };
+
+      this.router.navigate(['login'], params);
+    }
   }
 }
