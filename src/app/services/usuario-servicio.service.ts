@@ -10,14 +10,14 @@ export class UsuarioServicioService {
   constructor(private http: HttpClient) {}
 
   getPersonas(): Observable<usuarioS[]> {
-    this.usuarioURL = 'http://localhost:2726/practica/listar';
+    this.usuarioURL = 'http://localhost:2727/practica/listar';
     return this.http.get<usuarioS[]>(this.usuarioURL);
   }
 
   save(usuario: usuarioS) {
     console.log('>> ', usuario);
     this.usuarioURL =
-      'http://localhost:2726/practica/users?id=0&nombreUs=' +
+      'http://localhost:2727/practica/users?id=0&nombreUs=' +
       usuario.username +
       '&email=' +
       usuario.email +
@@ -32,8 +32,8 @@ export class UsuarioServicioService {
 
   login(usuario: usuarioS) {
     this.usuarioURL =
-      // 'http://localhost:2726/practica/login?email=aaaa&password=1234';
-      'http://localhost:2726/practica/login';
+      // 'http://localhost:2727/practica/login?email=aaaa&password=1234';
+      'http://localhost:2727/practica/login';
     return this.http.post<usuarioS>(
       this.usuarioURL +
         '?email=' +
