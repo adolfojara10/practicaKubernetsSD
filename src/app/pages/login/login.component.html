@@ -10,6 +10,9 @@
                 <input type="text" [(ngModel)]="usuario.email" class="form-control" id="email" name="email"
                     placeholder="Enter your email address" required #email="ngModel">
                 <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+                <input type="text" [(ngModel)]="usuario.contrasenia" class="form-control" id="contrasenia" name="contrasenia"
+                    placeholder="Enter your password" required #contrasenia="ngModel">
+                <div [hidden]="!contrasenia.pristine" class="alert alert-danger">Password is required</div>
             </div>
             <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
         </form>

@@ -13,11 +13,13 @@ export class LoginComponent implements OnInit {
   usuario: usuarioS = new usuarioS();
   usuarios: any;
   email: string = "";
+  contrasenia: string = "";
 
   constructor(private router: Router, private usuarioService: UsuarioServicioService) { }
 
   ngOnInit(): void {
     this.usuarioService.getPersonas().subscribe(data => {
+      console.log(data)
       this.usuarios = data;
     });
 
@@ -25,15 +27,16 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.email = this.usuario.email as string;
-    this.usuarioService.login(this.email).subscribe((response: usuarioS) => { this.usuario = response; });
-
+    this.contrasenia = this.usuario.contrasenia as string;
+    this.usuarioService.login(this.email, this.contrasenia).subscribe((response: usuarioS) => { this.usuario = response; console.log("-- > ",this.usuario)});
+    console.log(this.usuario.email, " --* ", this.usuario.contrasenia)
+    
     let params: NavigationExtras = {
       queryParams: {
         usuario : this.usuario
       }
     }
-    
-    this.router.navigate(['curso'], params);
+    //this.router.navigate(['curso'], params);
   }
 }
 

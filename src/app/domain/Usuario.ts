@@ -4,5 +4,5 @@ export class usuarioS {
     nombre: String= "";
     apellido: String= "";
     email: String= "";
-    
+    contrasenia: String= "";
 }

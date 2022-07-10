@@ -1,7 +1,7 @@
 <nav>
     <button type="button"><a href="/login">Login</a></button>
     <button type="button"><a href="/usuario">Usuario</a></button>
-  </nav>
+</nav>
 <div class="card my-5">
     <div class="card-body">
         <form (ngSubmit)="onSubmit()" #userForm="ngForm">
@@ -12,17 +12,17 @@
             </div>
             <div [hidden]="!name.pristine" class="alert alert-danger">Nombre is required</div>
             <div class="form-group">
-                <label for="name">Apellido</label>
-                <input type="text" [(ngModel)]="usuario.apellido" class="form-control" id="name" name="name"
-                    placeholder="Enter your name" required #name="ngModel">
+                <label for="apellido">Apellido</label>
+                <input type="text" [(ngModel)]="usuario.apellido" class="form-control" id="apellido" name="apellido"
+                    placeholder="Enter your apellido" required #apellido="ngModel">
             </div>
-            <div [hidden]="!name.pristine" class="alert alert-danger">Apellido is required</div>
+            <div [hidden]="!apellido.pristine" class="alert alert-danger">Apellido is required</div>
             <div class="form-group">
-                <label for="name">Cédula</label>
-                <input type="text" [(ngModel)]="usuario.cedula" class="form-control" id="name" name="name"
-                    placeholder="Enter your name" required #name="ngModel">
+                <label for="cedula">Cédula</label>
+                <input type="text" [(ngModel)]="usuario.cedula" class="form-control" id="cedula" name="cedula"
+                    placeholder="Enter your cedula" required #cedula="ngModel">
             </div>
-            <div [hidden]="!name.pristine" class="alert alert-danger">Cedula is required</div>
+            <div [hidden]="!cedula.pristine" class="alert alert-danger">Cedula is required</div>
 
 
             <div class="form-group">
@@ -30,6 +30,12 @@
                 <input type="text" [(ngModel)]="usuario.email" class="form-control" id="email" name="email"
                     placeholder="Enter your email address" required #email="ngModel">
                 <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div>
+            </div>
+            <div class="form-group">
+                <label for="contrasenia">Contraseñia</label>
+                <input type="password" [(ngModel)]="usuario.contrasenia" class="form-control" id="contrasenia"
+                    name="contrasenia" placeholder="Enter your email address" required #contrasenia="ngModel">
+                <div [hidden]="!contrasenia.pristine" class="alert alert-danger">Password is required</div>
             </div>
             <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
         </form>
