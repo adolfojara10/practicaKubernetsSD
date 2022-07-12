@@ -4,23 +4,30 @@ import { Observable } from 'rxjs';
 import { cursoS } from '../domain/Curso';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CursoServicioService {
+  private cursoURL: string = '';
 
-  private cursoURL: string = "";
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getCursos(): Observable<any[]>{
-    this.cursoURL = 'http://localhost:8080/curso';
-    return this.http.get<any>(this.cursoURL);
+  getCursos(): Observable<cursoS[]> {
+    this.cursoURL = 'http://localhost:2728/practicams/lista';
+    return this.http.get<cursoS[]>(this.cursoURL);
   }
 
-  save(curso: cursoS){
-    this.cursoURL = 'http://localhost:8080/curso';
-    return this.http.post<any>(this.cursoURL, curso);
+  save(curso: cursoS) {
+    this.cursoURL =
+      'http://localhost:2728/practicams/curso?id=0&nombre=' +
+      curso.nombre +
+      '&contenido=' +
+      curso.contenido +
+      '&categoria=' +
+      curso.categoria +
+      '&numeroHoras=' +
+      curso.numeroHoras +
+      '&precio=' +
+      curso.precio;
+    return this.http.post<cursoS>(this.cursoURL, curso);
   }
-
-
 }
