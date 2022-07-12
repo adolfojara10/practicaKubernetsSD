@@ -8,6 +8,7 @@ import { pagoS } from '../domain/Pago';
 export class PagoServicioService {
 
   private pagoURL: string = "";
+  private idUsuario: number = 0;
 
   constructor(private http: HttpClient) { }
 
@@ -19,5 +20,12 @@ export class PagoServicioService {
 
 
     return this.http.post<any>(this.pagoURL, pago);
+  }
+
+  listaCompras(idUsuario: number){
+    this.pagoURL = 'http://localhost:8080/listaCompras';
+    this.idUsuario = idUsuario;
+
+    return this.http.get<any>(this.idUsuario);
   }
 }

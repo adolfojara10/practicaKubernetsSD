@@ -12,6 +12,7 @@ import { PagoServicioService } from './services/pago-servicio.service';
 import { CursoServicioService } from './services/curso-servicio.service';
 import { CrearCursoComponent } from './pages/crear-curso/crear-curso.component';
 import { RouterModule } from '@angular/router';
+import { MisComprasComponent } from './pages/mis-compras/mis-compras.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     RegistrarUsuarioComponent,
     LoginComponent,
     CursosComponent,
-    CrearCursoComponent
+    CrearCursoComponent,
+    MisComprasComponent
   ],
   imports: [
     BrowserModule,
