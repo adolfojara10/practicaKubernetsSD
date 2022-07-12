@@ -86,7 +86,7 @@
                 <td>{{ curso.categoria }}</td>
                 <td>{{ curso.numeroHoras }}</td>
                 <td>{{ curso.precio }}</td>
-                <td><button id="comprar" (click)="comprar()">Comprar</button></td>
+                <td><button id="comprar" (click)="comprar(curso.id)">Comprar</button></td>
               </tr>
             </tbody>
           </table>

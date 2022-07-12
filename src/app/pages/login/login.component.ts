@@ -39,10 +39,12 @@ export class LoginComponent implements OnInit {
         if (window.confirm('Datos correctos, Iniciando sesion')) {
           let params: NavigationExtras = {
             queryParams: {
-              usuario: this.usuario,
+              usuario: this.usu.id,
             },
           };
-          this.router.navigate(['curso'], params);
+          console.log('pa ', params);
+          
+          this.router.navigate(['/curso'], params);
         }
       }
     });

@@ -16,6 +16,10 @@ export class CursoServicioService {
     return this.http.get<cursoS[]>(this.cursoURL);
   }
 
+  getCursoUsuario(){
+    
+  }
+
   save(curso: cursoS) {
     this.cursoURL =
       'http://localhost:2728/practicams/curso?id=0&nombre=' +

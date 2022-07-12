@@ -14,18 +14,12 @@ export class PagoServicioService {
 
   pagar(pago: pagoS){
     this.pagoURL = 'http://localhost:8080/pago';
-
-    
-
-
-
-    return this.http.post<any>(this.pagoURL, pago);
+    return this.http.post<pagoS>(this.pagoURL, pago);
   }
 
   listaCompras(idUsuario: number){
     this.pagoURL = 'http://localhost:8080/listaCompras';
     this.idUsuario = idUsuario;
-
-    return this.http.get<any>(this.idUsuario);
+    return this.http.get<any>(this.pagoURL);
   }
 }

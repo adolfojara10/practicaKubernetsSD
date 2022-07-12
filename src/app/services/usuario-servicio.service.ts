@@ -31,8 +31,7 @@ export class UsuarioServicioService {
   }
 
   login(usuario: usuarioS) {
-    this.usuarioURL =
-      // 'http://localhost:2727/practica/login?email=aaaa&password=1234';
+    this.usuarioURL =      
       'http://localhost:2727/practica/login';
     return this.http.post<usuarioS>(
       this.usuarioURL +
