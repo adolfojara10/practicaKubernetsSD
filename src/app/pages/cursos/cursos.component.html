@@ -73,7 +73,8 @@
                 <th scope="col">Contenido</th>
                 <th scope="col">Categoría</th>
                 <th scope="col">Número de Horas</th>
-                <th scope="col">Acción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Comprar</th>
               </tr>
             </thead>
             <tbody>
@@ -83,6 +84,7 @@
                 <td>{{ curso.contenido }}</td>
                 <td>{{ curso.categoria }}</td>
                 <td>{{ curso.numeroHoras }}</td>
+                <td>{{ curso.precio }}</td>
                 <td><button id="comprar" (click)="comprar()">Comprar</button></td>
               </tr>
             </tbody>
